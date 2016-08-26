@@ -1,0 +1,33 @@
+plugins {
+    id "com.moowork.node" version "0.13"
+}
+
+apply plugin: 'java'
+
+node {
+    download = true
+    workDir = file("${project.buildDir}/nodejs")
+    nodeModulesDir = file("${project.projectDir}")
+}
+
+task myScript(type: NodeTask) {
+  script = file('scripts/app.js')
+}
+
+task prepareLambda << {
+    copy {
+        from "node_modules/"
+        into "$buildDir/lambda/node_modules"
+    }
+
+    copy {
+        from "sanity/postman/"
+        into "$buildDir/lambda/postman"
+    }
+}
+
+task zip(type: Zip, dependsOn: prepareLambda) {
+    from "$buildDir/lambda"
+    from "sanity/function/"
+    destinationDir file("build")
+}

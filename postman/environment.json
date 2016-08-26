@@ -1,0 +1,23 @@
+{
+	"id": "7ba5104b-c02b-1ace-fd2b-4c89b9721eab",
+	"name": "Spring Boot Sanity",
+	"values": [
+		{
+			"key": "host",
+			"value": "http://foo.bar.baz",
+			"type": "text",
+			"enabled": true
+		},
+		{
+			"key": "port",
+			"value": "9999",
+			"type": "text",
+			"enabled": true
+		}
+	],
+	"timestamp": 1472152495680,
+	"synced": false,
+	"syncedFilename": "",
+	"team": null,
+	"isDeleted": false
+}
